@@ -108,9 +108,13 @@
         {
             CLPlacemark *firstPlacemark = [placemarks objectAtIndex:0];
             
-            self.mapView.zoom = 14;
-
-            [self.mapView setCenterCoordinate:firstPlacemark.location.coordinate animated:NO];
+            RMProjectedPoint projectedCenter = [self.mapView coordinateToProjectedPoint:firstPlacemark.location.coordinate];
+            
+            [self.mapView setProjectedBounds:RMProjectedRectMake(projectedCenter.x - (firstPlacemark.region.radius / 2), 
+                                                                 projectedCenter.y - (firstPlacemark.region.radius / 2), 
+                                                                 firstPlacemark.region.radius, 
+                                                                 firstPlacemark.region.radius) 
+                                    animated:NO];
         }
     }];
 }
