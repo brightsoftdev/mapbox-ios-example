@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OnlineLayerViewController : UIViewController
+@interface OnlineLayerViewController : UIViewController <UISearchBarDelegate, UIGestureRecognizerDelegate>
 
 @end
